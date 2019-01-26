@@ -1,0 +1,7 @@
+/node_modules
+/vendors
+qiniu-key.json
+!/node_modules/leancloud-storage/dist/av-min.js
+!/node_modules/qiniu-js/dist/qiniu.min.js
+!/vendors/moxie-1.5.6/bin/js/moxie.js
+!/vendors/plupload-2.3.6/js/plupload.min.js
