@@ -9,6 +9,12 @@
     },
     find(selector){
       return $(this.view.el).find(selector)[0]
+    },
+    active(){
+      $(this.el).addClass('active')
+    },
+    deactive(){
+      $(this.el).removeClass('active')
     }
   }
   let model = {}
@@ -17,12 +23,19 @@
       this.view = view
       this.model = model
       this.view.render()
+      this.bindEvents()
       window.eventHub.on('upload',(data)=>{
-        this.active()
+        this.view.active()
+      })
+      window.eventHub.on('select',()=>{
+        this.view.deactive()
       })
     },
-    active(){
-      $(this.view.el).addClass('active')
+    bindEvents(){
+      $(this.view.el).on('click',()=>{
+        window.eventHub.emit('new')
+        this.view.active()
+      })
     }
   }
   controler.init.call(controler,view,model)

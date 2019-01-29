@@ -14,7 +14,10 @@
       })
     },
     active(liId){
-      $(this.el).find(`data-song-id="${liId}"`).addClass('active')
+      $(this.el).find(`li[data-song-id="${liId}"]`).addClass('active').siblings().removeClass('active')
+    },
+    deactive(){
+      $(this.el).find('li').removeClass('active')
     }
   }
   let model = {
@@ -41,13 +44,35 @@
       this.bindEvents()
       window.eventHub.on('create', (data) => {
         this.model.data.songs.push(data)
-        debugger
         this.view.render(this.model.data)
+      })
+      window.eventHub.on('new',()=>{
+        this.view.deactive()
       })
       this.model.find().then(() => {
         this.view.render(this.model.data)
       },(error)=>{
         console.log(error)
+      })
+      window.eventHub.on('updata',(song)=>{
+        let songs = this.model.data.songs
+        for(let i=0;i<this.model.data.songs.length;i++){
+          if(this.model.data.songs[i].id === song.id){
+            this.model.data.songs[i] = song
+          }
+        }/* 
+        songs.map((song)=>{
+          if(song.id === data.id){
+            console.log('song.id')
+            console.log(this.model.song)
+            console.log('data.id')
+            console.log(data)
+            Object.assign(song,data)
+            console.log(2)
+            debugger
+          }
+        }) */
+        this.view.render(this.model.data)
       })
     },
     bindEvents(){
@@ -61,6 +86,7 @@
           }
         })
         window.eventHub.emit('select',JSON.parse(JSON.stringify(data)))
+        this.view.active(liId)
       })
     }
   }
