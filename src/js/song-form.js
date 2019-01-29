@@ -5,7 +5,7 @@
     <form class="form">
       <div class="row">
         <label>歌名
-          <input name="name" type="text" value="__songName__">
+          <input name="name" type="text" value="__name__">
         </label>
       </div>
       <div class="row">
@@ -15,7 +15,7 @@
       </div>
       <div class="row">
         <label>外链
-          <input name="url" type="text" value="__sourceLink__">
+          <input name="url" type="text" value="__url__">
         </label>
       </div>
       <div class="row">
@@ -27,7 +27,7 @@
       this.$el = $(this.el)
     },
     render(data = {}) {
-      let placeholders = ['songName', 'sourceLink']
+      let placeholders = ['name', 'url']
       let html = this.template
       placeholders.map((string) => {
         html = html.replace(`__${string}__`, data[string] || '')
@@ -79,6 +79,9 @@
       this.view.render()
       this.bindEvents()
       window.eventHub.on('upload', (data) => {
+        this.view.render(data)
+      })
+      window.eventHub.on('select',(data)=>{
         this.view.render(data)
       })
     },

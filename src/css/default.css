@@ -17,6 +17,7 @@ aside > .newSong{padding: 10px;text-align: center;border-bottom: 1px solid #888;
 aside > .newSong.active{background: rgb(218, 84, 84);color: white;}
 aside > .songList-container{flex-grow: 1;padding: 10px;}
 aside > .songList-container > ul > li{border-bottom: 1px solid #888;padding: 10px;}
+aside > .songList-container > ul > li.active{background: rgb(218, 84, 84);color: white;}
 aside > .uploadBtnArea > .uploadBtnContainer{border:2px dashed #888;padding: 30px 50px;display: flex;justify-content: center;align-items: center;flex-direction: column;}
 aside > .uploadBtnArea > .uploadBtnContainer > .uploadBtn{background: rgb(218, 84, 84);color: white;border-radius: 3px;border: none;padding: 5px;}
 

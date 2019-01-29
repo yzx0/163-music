@@ -61,9 +61,9 @@
             // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
             var domain = up.getOption('domain');
             var response = JSON.parse(info.response);
-            var sourceLink = domain + encodeURIComponent(response.key);
-            var songName = response.key
-            window.eventHub.emit('upload',{'sourceLink':sourceLink,'songName':songName})
+            var url = domain + encodeURIComponent(response.key);
+            var name = response.key
+            window.eventHub.emit('upload',{'url':url,'name':name})
           },
           'Error': function (up, err, errTip) {
             //上传出错时,处理相关的事情
