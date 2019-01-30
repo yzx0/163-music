@@ -79,7 +79,6 @@
       // 保存到云端
       return song.save().then((response)=>{
         Object.assign(this.data,data)
-        console.log(this.data)
         return response
       })
     }

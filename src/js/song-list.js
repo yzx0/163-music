@@ -55,24 +55,15 @@
         console.log(error)
       })
       window.eventHub.on('updata',(song)=>{
-        let songs = this.model.data.songs
+        let liId
         for(let i=0;i<this.model.data.songs.length;i++){
           if(this.model.data.songs[i].id === song.id){
             this.model.data.songs[i] = song
+            liId = song.id
           }
-        }/* 
-        songs.map((song)=>{
-          if(song.id === data.id){
-            console.log('song.id')
-            console.log(this.model.song)
-            console.log('data.id')
-            console.log(data)
-            Object.assign(song,data)
-            console.log(2)
-            debugger
-          }
-        }) */
+        }
         this.view.render(this.model.data)
+        this.view.active(liId)
       })
     },
     bindEvents(){
