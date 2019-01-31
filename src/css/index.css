@@ -1,0 +1,30 @@
+*{margin: 0;padding: 0;}
+*{box-sizing: border-box;}
+*::after,
+*::before{box-sizing: border-box;}
+ul,ol{list-style: none;}
+a{color: inherit;text-decoration: none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+
+/*topfix*/
+nav > .topfix{background: #d43c33;display: flex;justify-content: space-between;}
+nav > .topfix > .topLogo{padding: 20px 0 16px 10px;}
+nav > .topfix > .topLogo > .topsvg{width: 142px;height: 25px;}
+nav > .topfix > .downloadBtn{display: flex;justify-content: center;align-items: center; margin-right: 10px;}
+nav > .topfix > .downloadBtn > span{border: 1px solid white;color: white;border-radius: 20px;padding: 8px;font-size: 15px;}
+
+/*topNavBar*/
+nav > .topNavBar{}
+nav > .topNavBar > ul{display: flex;justify-content: space-around;padding-top: 13px;padding-bottom: 13px;font-size: 15px;border-bottom: 1px solid #ccc;}
+nav > .topNavBar > ul >li{position: relative;}
+nav > .topNavBar > ul >li.active::before{content: '';height: 2px;width: 100%;background: #d33a31;position: absolute;bottom: -14px;left: 0;}
+nav > .topNavBar > ul >li.active{color: #d43c33;}
+
+/*recommendSongList*/
+.page > .recommendSongList{}
+.page > .recommendSongList > .recommend{font-size: 17px;padding: 20px 0 20px 10px;position: relative;}
+.page > .recommendSongList > .recommend::before{content: '';height:16px;width: 2px;background: #d43c33;position: absolute;top: 50%;left: 0;margin-top: -8px;}
+.page > .recommendSongList > .songListShow{}
+.page > .recommendSongList > .songListShow > ul{display: flex;justify-content: space-between;flex-wrap: wrap;}
+.page > .recommendSongList > .songListShow > ul >li{background-image: url(../img/songlisi.webp);background-position: center center;background-size: cover; width: 630px;height: 630px;}
+.page > .recommendSongList > .songListShow > ul >p{}
