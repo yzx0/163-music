@@ -47,6 +47,7 @@
           },
           'BeforeUpload': function (up, file) {
             // 每个文件上传前,处理相关的事情
+            $('#site-loading').addClass('active')
           },
           'UploadProgress': function (up, file) {
             // 每个文件上传时,处理相关的事情
@@ -70,6 +71,7 @@
           },
           'UploadComplete': function () {
             //队列文件处理完毕后,处理相关的事情
+            $('#site-loading').removeClass('active')
           }
         }
       });

@@ -27,3 +27,15 @@ aside > .uploadBtnArea > .uploadBtnContainer > .uploadBtn{background: rgb(218, 8
 .page > main > .form > .row{padding: 10px;}
 .page > main > .form > .row > label > input{padding: 3px 8px;height: 30px;border-radius: 5px;border: 1px solid #888;outline: none;margin-left: 9px;}
 .page > main > .form > .row > button{}
+
+/*loading*/
+@keyframes loading {
+  0%{
+    transform: scale(1.0)
+  }
+  100%{
+    transform: scale(0.1)
+  }
+}
+.page > .site-loading.active{width: 100%;height: 100%;background: rgba(190, 190, 190, 0.3);position: fixed;top: 0;left: 0;z-index: 2;display: flex;justify-content: center;align-items: center;}
+.page > .site-loading::before{content: '';width: 50px;height: 50px;border-radius: 50%;background: rgba(190, 190, 190, 0.5);animation: loading 0.7s linear infinite alternate;}
