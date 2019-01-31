@@ -24,6 +24,9 @@
       this.model = model
       this.view.render()
       this.bindEvents()
+      this.bindEventHub()
+    },
+    bindEventHub(){
       window.eventHub.on('upload',(data)=>{
         this.view.active()
       })

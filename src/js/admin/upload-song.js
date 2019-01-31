@@ -1,6 +1,6 @@
 {
   let view = {
-    el: '#page>aside>#uploadBtnArea',
+    el: '#page > main > #uploadBtnArea',
     template: `
       <div id="uploadBtnContainer" class="uploadBtnContainer">
         <button id="uploadBtn" class="uploadBtn">点击或拖曳上传</button>
@@ -8,10 +8,17 @@
       </div>
     `,
     render(data) {
+      console.log($('#page > main > #uploadBtnArea'))
       $(this.el).html(this.template)
     },
     find(selector){
       return $(this.el).find(selector)[0]
+    },
+    showUploadArea(){
+      $(this.el).css('display','flex')
+    },
+    hideUploadArea(){
+      $(this.el).css('display','none')
     }
   }
   let model = {}
@@ -20,9 +27,19 @@
       this.view = view
       this.model = model
       this.view.render()
+      this.bindEventHub()
       this.initQiniu()
     },
+    bindEventHub(){
+      window.eventHub.on('new',()=>{
+        this.view.showUploadArea()
+      })
+      window.eventHub.on('select',()=>{
+        this.view.hideUploadArea()
+      })
+    },
     initQiniu() {
+      console.log($(this.view.el))
       var uploader = Qiniu.uploader({
         runtimes: 'html5',    //上传模式,依次退化
         browse_button: this.view.find('#uploadBtn'),       //上传选择的点选按钮，**必需**
@@ -74,7 +91,7 @@
             $('#site-loading').removeClass('active')
           }
         }
-      });
+      })
     }
   }
   controler.init.call(controler, view, model)

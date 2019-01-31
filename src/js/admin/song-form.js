@@ -1,8 +1,8 @@
 {
   let view = {
-    el: '.page > main',
+    el: '.page > main > #form-container',
     template: `
-    <form class="form">
+    <form class="form active" id="form">
       <div class="row">
         <label>歌名
           <input name="name" type="text" value="__name__">
@@ -32,7 +32,6 @@
       placeholders.map((string) => {
         html = html.replace(`__${string}__`, data[string] || '')
       })
-
       $(this.el).html(html)
       /* let html = this.template
       if($.isEmptyObject(data)){
@@ -49,6 +48,12 @@
     },
     reset() {
       this.render({})
+    },
+    show(){
+      $(this.el).find('#form').css('display','block')
+    },
+    hide(){
+      $(this.el).find('#form').css('display','none')
     }
   }
   let model = {
@@ -90,16 +95,7 @@
       this, view.init()
       this.view.render()
       this.bindEvents()
-      window.eventHub.on('upload', (data) => {
-        this.view.render(data)
-      })
-      window.eventHub.on('select', (data) => {
-        this.view.render(data)
-        this.model.data = data
-      })
-      window.eventHub.on('new', () => {
-        this.view.render({})
-      })
+      this.bindEventHub()
     },
     bindEvents() {
       this.view.$el.on('submit', 'form', (e) => {
@@ -121,6 +117,21 @@
             window.eventHub.emit('create', copyData)
           })
         }
+      })
+    },
+    bindEventHub(){
+      window.eventHub.on('upload', (data) => {
+        this.view.render(data)
+      })
+      window.eventHub.on('select', (data) => {
+        this.view.render(data)
+        this.model.data = data
+        this.view.show()
+      })
+      window.eventHub.on('new', () => {
+        this.view.render({})
+        
+        this.view.hide()
       })
     }
   }
