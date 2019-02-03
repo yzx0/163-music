@@ -14,6 +14,11 @@ h1,h2,h3,h4,h5,h6{font-weight: normal;}
   overflow: hidden;
 }
 
+/*tab*/
+nav > .topNavBar{position: relative;}
+.hotSongsList{position: absolute;top: 100%;left: 0;width: 100%;display: none;}
+.searchSong{position: absolute;top: 100%;left: 0;width: 100%;display: none;}
+
 /*topfix*/
 nav > .topfix{background: #d43c33;display: flex;justify-content: space-between;}
 nav > .topfix > .topLogo{padding: 20px 0 16px 10px;}
@@ -22,7 +27,6 @@ nav > .topfix > .downloadBtn{display: flex;justify-content: center;align-items: 
 nav > .topfix > .downloadBtn > span{border: 1px solid white;color: white;border-radius: 20px;padding: 4px 10px;font-size: 15px;}
 
 /*topNavBar*/
-nav > .topNavBar{}
 nav > .topNavBar > ul{display: flex;justify-content: space-around;padding-top: 9px;padding-bottom: 9px;font-size: 15px;border-bottom: 1px solid #ccc;}
 nav > .topNavBar > ul >li{position: relative;padding-left: 6px;padding-right: 6px;margin-right: 20px;}
 nav > .topNavBar > ul >li.active::before{content: '';height: 2px;width: 100%;background: #d33a31;position: absolute;bottom: -10px;left: 0;}
@@ -50,8 +54,30 @@ nav > .topNavBar > ul >li.active{color: #d43c33;}
 .page > .newestSong > ul > li > .songInformation > .singer > .toneQualityIcon{margin-right: 3px;}
 
 /*footer*/
-footer{background-image: url(//i.loli.net/2017/08/25/599f862b9c98d.png);background-position: center center;padding-top: 0.1px;padding-bottom: 50px;}
+footer{background-image: url(//i.loli.net/2017/08/25/599f862b9c98d.png);background-position: center center;padding-top: 0.1px;padding-bottom: 50px;background-size: cover;background-repeat: no-repeat;}
 footer > .footerLogo{width: 230px;height: 44px;margin-left: auto;margin-right: auto;margin-top: 38px;}
 footer > .informationContaioner{display: flex;justify-content: center;align-items: center;flex-direction: column;margin-left: 36px;margin-right: 36px;}
 footer > .informationContaioner > .openApp{border:1px solid #d43c33;border-radius: 20px;padding-top: 8px;padding-bottom: 8px;font-size: 16px;color: #d43c33;width: 100%;text-align: center;margin:16px 0 5px 0;}
 footer > .informationContaioner > .copyRight{font-size: 12px;color: #888;transform: scale(0.75);white-space: nowrap;}
+
+/*hotSongList*/
+
+nav > .topNavBar > .hotSongsList > .banner{position: relative;}
+nav > .topNavBar > .hotSongsList > .banner > .bgImg{width: 100%;}
+nav > .topNavBar > .hotSongsList > .banner > .bannerText{position: absolute;top: 50%;left: 0;transform: translateY(-50%);display: flex;flex-direction: column;align-items: flex-start; margin-left: 24px;}
+nav > .topNavBar > .hotSongsList > .banner > .bannerText > img{height: 67px; width: 142px;}
+nav > .topNavBar > .hotSongsList > .banner > .bannerText > p{margin-top: 10px;color: white;font-size: 12px;}
+nav > .topNavBar > .hotSongsList > .songList{}
+nav > .topNavBar > .hotSongsList > .songList > ol > li{display: flex;color: #ccc;padding-top: 4px;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .rank{padding-left: 10px;padding-right: 13px;display: flex;align-items: center;font-size: 17px;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .songInformation{flex-grow: 1;border-bottom: 1px solid #ccc;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .songInformation > .songName{padding-bottom: 6px;font-size: 17px;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .songInformation > .singer{padding-bottom: 8px;font-size: 12px;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .playIcon{border-bottom: 1px solid #ccc;padding-right: 12px;fill: #ccc;display: flex;align-items: center;}
+nav > .topNavBar > .hotSongsList > .songList > ol > li > .playIcon > .icon{height: 22px;width: 22px;}
+nav > .topNavBar > .hotSongsList > .checkFullList{padding-top: 17px;padding-bottom: 22px;}
+nav > .topNavBar > .hotSongsList > .checkFullList > p{text-align: center;color: #999;font-size: 14px;}
+
+/*searchBar*/
+nav > .topNavBar > .searchSong > .searchBar{border: 1px solid #ebecec;background: #ebecec;border-radius: 20px;display: flex;align-items: center;padding-left: 8px;padding-right: 8px;margin-left: 10px;margin-right: 10px;}
+nav > .topNavBar > .searchSong > .searchBar > input{background: none;border: none;padding:9px 11px;flex-grow: 1;outline: none;}
