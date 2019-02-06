@@ -10,7 +10,7 @@
       </div>
       <div class="row">
         <label>歌手
-          <input name="singer" type="text">
+          <input name="singer" type="text" value="__singer__">
         </label>
       </div>
       <div class="row">
@@ -27,12 +27,13 @@
       this.$el = $(this.el)
     },
     render(data = {}) {
-      let placeholders = ['name', 'url']
+      let placeholders = ['name', 'url','singer']
       let html = this.template
       placeholders.map((string) => {
         html = html.replace(`__${string}__`, data[string] || '')
       })
       $(this.el).html(html)
+      console.log(data)
       /* let html = this.template
       if($.isEmptyObject(data)){
         let html = this.template
@@ -75,6 +76,7 @@
       // 修改属性
       song.set('name',data.name)
       song.set('url',data.url)
+      song.set('singer',data.singer)
       // 保存到云端
       return song.save().then((response)=>{
         Object.assign(this.data,data)
@@ -101,6 +103,8 @@
         })
         if(this.model.data.id){
           this.model.updata(data).then(()=>{  
+            console.log('---')
+            console.log(JSON.parse(JSON.stringify(this.model.data)))
             window.eventHub.emit('updata',JSON.parse(JSON.stringify(this.model.data)))
           })
         }else{

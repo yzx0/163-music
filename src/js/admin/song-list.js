@@ -54,6 +54,7 @@
             data = song
           }
         })
+        console.log(JSON.parse(JSON.stringify(data)))
         window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
         this.view.active(liId)
       })

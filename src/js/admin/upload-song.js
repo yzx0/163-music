@@ -13,12 +13,6 @@
     },
     find(selector){
       return $(this.el).find(selector)[0]
-    },
-    showUploadArea(){
-      $(this.el).css('display','flex')
-    },
-    hideUploadArea(){
-      $(this.el).css('display','none')
     }
   }
   let model = {}
@@ -30,14 +24,7 @@
       this.bindEventHub()
       this.initQiniu()
     },
-    bindEventHub(){
-      window.eventHub.on('new',()=>{
-        //this.view.showUploadArea()
-      })
-      window.eventHub.on('select',()=>{
-        //this.view.hideUploadArea()
-      })
-    },
+    bindEventHub(){},
     initQiniu() {
       console.log($(this.view.el))
       var uploader = Qiniu.uploader({
