@@ -17,7 +17,7 @@
           <p>{{歌手1}}</p>
         </div>
       </div>
-      <a class="playIcon" href="./song.html?id={{id}}&a=1">
+      <a class="playIcon" href="./song.html?id={{id}}">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-iconplay"></use>
         </svg>

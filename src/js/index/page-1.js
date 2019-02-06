@@ -31,16 +31,20 @@
       })
     },
     loadModule1(){
+      console.log(111)
       let script1 = document.createElement('script')
       script1.src = './js/index/page-1-1.js'
       window.onload = function (){console.log('模块一加载完毕')}
       document.body.appendChild(script1)
+      console.log(222)
     },
     loadModule2(){
+      console.log(333)
       let script2 = document.createElement('script')
       script2.src = './js/index/page-1-2.js'
       window.onload = function (){console.log('模块二加载完毕')}
       document.body.appendChild(script2)
+      console.log(444)
     }
   }
   controller.init.call(controller,view,model)

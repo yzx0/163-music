@@ -7,9 +7,17 @@
       <button id="pause">暂停</button>
     `,
     render(data){
-      $(this.el).html(this.template.replace('{{url}}'),data.url)
+      console.log('render')
+      console.log(data.url)
+      $(this.el).html(this.template.replace('{{url}}',data.url))
+    },
+    play(){
+      $(this.el).find('audio')[0].play()
+    },
+    pause(){
+      $(this.el).find('audio')[0].pause()
     }
-  }
+  } 
   let model = {
     data:{
       id:'',
@@ -21,22 +29,34 @@
       this.data.id = id
     },
     find(){
-      var song = new AV.Query('song');
-      return song.get(this.data.id).then((song)=>{
-        return song
+      var query = new AV.Query('song');
+      return query.get(this.data.id).then((song)=>{
+        Object.assign(this.data,{...song.attributes})
+        return song 
       }, function (error) {
         console.log(error)
-      });
+      })
     }
   }
   let controller = {
     init(view,model){
       this.view = view
       this.model = model
-      this.view.render(this.model.data)
+      this.bindEvents()
       this.model.setId(this.getId())
       this.model.find().then((song)=>{
-        console.log(song)
+        this.view.render(this.model.data)
+      },(error)=>{
+        console.log(error)
+      })
+    },
+    bindEvents(){
+      $(this.view.el).on('click','#play',()=>{
+        this.view.play()
+      })
+      $(this.view.el).on('click','#pause',()=>{
+        this.view.pause()
+        console.log(111)
       })
     },
     getId(){
@@ -61,5 +81,5 @@
       return id
     }
   }
-  controller.init(view,model)
+  controller.init.call(controller,view,model)
 }
