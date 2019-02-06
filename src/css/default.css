@@ -13,23 +13,23 @@ body{font-size: 12px;background-image: url(../img/background.jpg);background-siz
 
 /*aside*/
 .page > aside{display: flex;flex-direction: column;background: rgba(100,100,100,0.2);}
-.page > aside > .newSong{padding: 10px;text-align: center;border-bottom: 1px solid #888;transition: all 0.5s;cursor: pointer;}
-.page > aside > .newSong.active{background: rgba(100,100,100,0.3);color: #ddd;}
 .page > aside > .songList-container{flex-grow: 1;padding: 10px;}
 .page > aside > .songList-container > ul > li{border-bottom: 1px solid #888;padding: 10px;cursor: pointer;}
 .page > aside > .songList-container > ul > li.active{background: rgba(100,100,100,0.3);color: #ddd;}
 
 /*main*/
 .page > main{display: flex;justify-content: center;align-items: center;flex-direction: column;}
-.page > main > .form-container > .form{padding: 30px;font-size: 14px;display: none;background: rgba(100,100,100,0.3);border-radius: 5px;}
+.page > main > .form-container > .form{padding: 30px;font-size: 14px;background: rgba(100,100,100,0.3);border-radius: 5px;display: flex;justify-content: center; position: relative;transform: translateY(-50%)}
 .page > main > .form-container > .form > .row{padding: 10px;}
 .page > main > .form-container > .form > .row > label{color: #ddd;}
 .page > main > .form-container > .form > .row > label > input{padding: 3px 8px;height: 30px;border-radius: 5px;border: 1px solid #aaa;outline: none;margin-left: 9px;background: rgba(238, 236, 236, 0.2);}
-.page > main > .form-container > .form > .row:last-child{text-align: center;}
-.page > main > .form-container > .form > .row > button{cursor: pointer; width: 50%; background: rgba(100,100,100,0.2);padding: 8px 10px;border-radius: 6px;border: 1px solid rgba(100,100,100,0.2);color: #ddd;text-align: center;}
-.page > main > .uploadBtnArea{display: flex;justify-content: center;align-items: center;flex-direction: column;}
-.page > main > .uploadBtnArea > .uploadBtnContainer{border-radius: 10px; border:2px dashed #888;padding: 200px 300px;display: flex;justify-content: center;align-items: center;flex-direction: column;}
+.page > main > .form-container > .form > .row:last-child{text-align: center;position: absolute;top: 100%;margin-left: auto;margin-right: auto;width: 100%;}
+.page > main > .form-container > .form > .row > button{cursor: pointer; width: 150px;; background: rgba(100,100,100,0.2);padding: 8px 10px;border-radius: 6px;border: 1px solid rgba(100,100,100,0.2);color: #ddd;text-align: center;}
+.page > main > .uploadBtnArea{display: flex;justify-content: center;align-items: center;flex-direction: column;transform: translateY(-50%);}
+.page > main > .uploadBtnArea > .uploadBtnContainer{border-radius: 10px; border:2px dashed #888;padding: 60px 310px;display: flex;justify-content: center;align-items: center;flex-direction: column;}
 .page > main > .uploadBtnArea > .uploadBtnContainer > .uploadBtn{background: rgba(100,100,100,0.3);color: #ddd;border-radius: 3px;border: none;padding: 20px;margin: 20px;cursor: pointer;}
+.page > main > .newSong > .creatSong{background: rgba(100,100,100,0.3);color: #ddd;border-radius: 6px;border: none;margin: 20px;cursor: pointer;width: 150px;line-height: 35px;}
+
 
 /*loading*/
 @keyframes loading {

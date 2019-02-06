@@ -17,18 +17,21 @@
           <p>{{歌手1}}</p>
         </div>
       </div>
-      <div class="playIcon">
+      <a class="playIcon" href="./song.html?id={{id}}&a=1">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-iconplay"></use>
         </svg>
-      </div>
+      </a>
     </li>
    `,
     render(data) {
       let { songs } = data
       let li
       songs.map((song) => {
-        li = this.template.replace('{{歌名1}}', song.name).replace('{{歌手1}}', song.singer)
+        li = this.template
+          .replace('{{歌名1}}', song.name)
+          .replace('{{歌手1}}', song.singer)
+          .replace('{{id}}',song.id)
         this.$el.find('ul').append(li)
       })
     }

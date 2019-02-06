@@ -1,20 +1,11 @@
 {
   let view = {
-    el: '.page > aside > .newSong',
+    el: '.page > main > .newSong',
     template: `
-      新建歌曲
+      <button class="creatSong" id="creatSong">新建歌曲</button>
     `,
     render(data){
       $(this.el).html(this.template)
-    },
-    find(selector){
-      return $(this.view.el).find(selector)[0]
-    },
-    active(){
-      $(this.el).addClass('active')
-    },
-    deactive(){
-      $(this.el).removeClass('active')
     }
   }
   let model = {}
@@ -24,20 +15,10 @@
       this.model = model
       this.view.render()
       this.bindEvents()
-      this.bindEventHub()
-    },
-    bindEventHub(){
-      window.eventHub.on('upload',(data)=>{
-        this.view.active()
-      })
-      window.eventHub.on('select',()=>{
-        this.view.deactive()
-      })
     },
     bindEvents(){
       $(this.view.el).on('click',()=>{
         window.eventHub.emit('new')
-        this.view.active()
       })
     }
   }

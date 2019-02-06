@@ -2,7 +2,7 @@
   let view = {
     el: '.page > main > #form-container',
     template: `
-    <form class="form active" id="form">
+    <form class="form active" id="form" autocomplete="off">
       <div class="row">
         <label>歌名
           <input name="name" type="text" value="__name__">
@@ -48,12 +48,6 @@
     },
     reset() {
       this.render({})
-    },
-    show(){
-      $(this.el).find('#form').css('display','block')
-    },
-    hide(){
-      $(this.el).find('#form').css('display','none')
     }
   }
   let model = {
@@ -126,12 +120,9 @@
       window.eventHub.on('select', (data) => {
         this.view.render(data)
         this.model.data = data
-        this.view.show()
       })
       window.eventHub.on('new', () => {
         this.view.render({})
-        
-        this.view.hide()
       })
     }
   }

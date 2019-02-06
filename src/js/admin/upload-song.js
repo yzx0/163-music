@@ -32,10 +32,10 @@
     },
     bindEventHub(){
       window.eventHub.on('new',()=>{
-        this.view.showUploadArea()
+        //this.view.showUploadArea()
       })
       window.eventHub.on('select',()=>{
-        this.view.hideUploadArea()
+        //this.view.hideUploadArea()
       })
     },
     initQiniu() {
