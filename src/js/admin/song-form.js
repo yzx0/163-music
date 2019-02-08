@@ -19,6 +19,11 @@
         </label>
       </div>
       <div class="row">
+      <label>封面
+        <input name="cover" type="text" value="__cover__">
+      </label>
+    </div>
+      <div class="row">
         <button type="submit">保存</button>
       </div>
     </form>
@@ -27,7 +32,7 @@
       this.$el = $(this.el)
     },
     render(data = {}) {
-      let placeholders = ['name', 'url','singer']
+      let placeholders = ['name', 'url','singer','cover']
       let html = this.template
       placeholders.map((string) => {
         html = html.replace(`__${string}__`, data[string] || '')
@@ -53,7 +58,7 @@
   }
   let model = {
     data: {
-      name: '', singer: '', url: '', id: ''
+      name: '', singer: '', url: '', id: '',cover:''
     },
     create(data) {
       var song = AV.Object.extend('song')
@@ -62,6 +67,7 @@
       song.set('name', data.name)
       song.set('singer', data.singer)
       song.set('url', data.url)
+      song.set('cover', data.cover)
 
       return song.save().then((newSong) => {
         let { id, attributes } = newSong
@@ -77,6 +83,7 @@
       song.set('name',data.name)
       song.set('url',data.url)
       song.set('singer',data.singer)
+      song.set('cover',data.cover)
       // 保存到云端
       return song.save().then((response)=>{
         Object.assign(this.data,data)
@@ -97,7 +104,7 @@
       this.view.$el.on('submit', 'form', (e) => {
         e.preventDefault()
         let data = {}
-        let needs = 'name singer url'.split(' ')
+        let needs = 'name singer url cover'.split(' ')
         needs.map((string) => {
           data[string] = this.view.$el.find(`input[name=${string}]`).val()
         })

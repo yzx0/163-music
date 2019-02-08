@@ -1,0 +1,34 @@
+  *{margin: 0;padding: 0;box-sizing: border-box;}
+  *::after,
+  *::before{box-sizing: border-box;}
+  a{color: inherit;text-decoration: none;}
+  .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+
+/*page*/
+.page{height: 100vh;}
+.page > .background{position: absolute; width: 100%;height: 100%;background: url(../img/cat.jpg)no-repeat center center;background-size: cover;filter: blur(15px);z-index: -2;}
+/*logo*/
+.page > .logo{width: 92px;height: 17px;display: inline-block;margin: 10px;}
+
+.disc-container{position: relative;}
+
+/*pointer*/
+.disc-container > .pointer{width:26vw;position: absolute;top: -10vh;left: 47%;}
+
+/*disc*/
+.disc-container > .disc{margin-top: 4.5vh;width: 100vw;display: flex;justify-content: center;align-items: center;}
+.disc-container > .disc > .ring{width: 80vw;}
+.disc-container > .disc > .light{width: 80vw;position: absolute;}
+.disc-container > .disc > .icon-wrapper{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%)}
+.disc-container > .disc > .icon-wrapper > .icon{width: 14.5vw;height: 14.5vh;fill: white;}
+.disc-container > .disc > .cover{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);z-index: -1;width: 50vw;}
+
+/*link*/
+.page > .link{position: fixed;bottom: 0;display: flex;justify-content: center;width: 100%;white-space: nowrap;}
+.page > .link > a{border: 1px solid #d33a31;border-radius: 20px;padding:1.2vh 17vw;margin: 1vh 1vw;font-size: 18px;color: #d33a31;}
+.page > .link > a:last-child{background: #d33a31;color: white;margin-left: 2vw;}
