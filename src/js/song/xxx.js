@@ -4,6 +4,8 @@
     render(data) {
       let {song,status} = data
       $(this.el).find('audio').attr('src',song.url)
+      $(this.el).find('#cover').attr('src',song.cover)
+      $(this.el).find('#background').css('background',`url(${song.cover})no-repeat center center;background-size: cover;`)
       if(status === 'playing'){
         $(this.el).find('#cover').addClass('playing')
       }else{
@@ -40,7 +42,8 @@
         id: '',
         name: '',
         singer: '',
-        url: ''
+        url: '',
+        cover:''
       },
       status:'status'
     },
