@@ -6,25 +6,16 @@
       $(this.el).find('audio').attr('src',song.url)
       $(this.el).find('#cover').attr('src',song.cover)
       $(this.el).find('#background').css('background',`url(${song.cover})no-repeat center center;background-size: cover;`)
-      if(status === 'playing'){
-        $(this.el).find('#cover').addClass('playing')
-      }else{
-        $(this.el).find('#cover').removeClass('playing')
-      }
     },
     play() {
-      console.log(12345)
       let playPromise = $(this.el).find('audio')[0].play()
-      console.log($(this.el).find('audio')[0])
       if(playPromise !== undefined){
         playPromise.then(()=>{
-          console.log('-----')
           $(this.el).find('audio')[0].play()
           $(this.el).find('#icon-pause').addClass('active')
           $(this.el).find('#icon-play').removeClass('active')
           $(this.el).find('#cover').addClass('playing')
         },(error)=>{
-          console.log(00000)
           console.log(error)
         })
       }
@@ -45,7 +36,7 @@
         url: '',
         cover:''
       },
-      status:'status'
+      status:'pause'
     },
     setId(id) {
       this.data.id = id
@@ -77,17 +68,18 @@
     },
     bindEvents() {
       $(this.view.el).find('#icon-play').on('click',(e) => {
-        console.log('paly点了')
-        console.log($(this.view.el).find('#icon-play'))
-        this.view.play()
         this.model.setStatus('playing')
+        this.view.play()
       })
       $(this.view.el).find('#icon-pause').on('click', () => {
-        console.log('pause被点了')
-        console.log($(this.view.el).find('#icon-pause'))
-        this.view.pause()
         this.model.setStatus('pause')
+        this.view.pause() 
       })
+
+      let audio = $(this.view.el).find('audio').get(0)
+      audio.onended = ()=>{
+        this.view.pause()
+      }
     },
     getId() {
       let search = window.location.search
