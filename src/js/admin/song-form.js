@@ -22,7 +22,13 @@
       <label>封面
         <input name="cover" type="text" value="__cover__">
       </label>
-    </div>
+      </div>
+      <div class="lyric-wrapper">
+      <label>
+        歌词
+      </label>
+        <textarea cols=130 rows=5 name="lyric">__lyric__</textarea>
+      </div>
       <div class="row">
         <button type="submit">保存</button>
       </div>
@@ -32,25 +38,13 @@
       this.$el = $(this.el)
     },
     render(data = {}) {
-      let placeholders = ['name', 'url','singer','cover']
+      let placeholders = ['name', 'url','singer','cover','lyric']
       let html = this.template
       placeholders.map((string) => {
         html = html.replace(`__${string}__`, data[string] || '')
       })
       $(this.el).html(html)
       console.log(data)
-      /* let html = this.template
-      if($.isEmptyObject(data)){
-        let html = this.template
-        html = html.replace('__songName__','')
-        html = html.replace('__sourceLink__','')
-        $(this.el).html(html)
-      }else{
-        console.log(data['songName'])
-        html = html.replace('__songName__',data['songName'] || '')
-        html = html.replace('__sourceLink__',data['sourceLink'] || '')
-        $(this.el).html(html) 
-      } */
     },
     reset() {
       this.render({})
@@ -58,7 +52,7 @@
   }
   let model = {
     data: {
-      name: '', singer: '', url: '', id: '',cover:''
+      name: '', singer: '', url: '', id: '',cover:'',lyric:''
     },
     create(data) {
       var song = AV.Object.extend('song')
@@ -68,6 +62,7 @@
       song.set('singer', data.singer)
       song.set('url', data.url)
       song.set('cover', data.cover)
+      song.set('lyric', data.lyric)
 
       return song.save().then((newSong) => {
         let { id, attributes } = newSong
@@ -84,6 +79,7 @@
       song.set('url',data.url)
       song.set('singer',data.singer)
       song.set('cover',data.cover)
+      song.set('lyric', data.lyric)
       // 保存到云端
       return song.save().then((response)=>{
         Object.assign(this.data,data)
@@ -104,9 +100,9 @@
       this.view.$el.on('submit', 'form', (e) => {
         e.preventDefault()
         let data = {}
-        let needs = 'name singer url cover'.split(' ')
+        let needs = 'name singer url cover lyric'.split(' ')
         needs.map((string) => {
-          data[string] = this.view.$el.find(`input[name=${string}]`).val()
+          data[string] = this.view.$el.find(`[name="${string}"]`).val()
         })
         if(this.model.data.id){
           this.model.updata(data).then(()=>{  
