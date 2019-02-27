@@ -44,7 +44,7 @@
 .disc-container > .disc > .icon-wrapper > .icon-pause.active{display: block;}
 
 /*lyric*/
-.page > .song-description{color: white;text-align: center;}
+.page > .song-description{color: #aaa;text-align: center;}
 .song-description h1{
 	color: white;
 	font-size: 18px;
@@ -60,6 +60,10 @@
 .song-description .lines{
 	transition: transform 0.3s;
 }
+.song-description p.active{
+	color: white;
+}
+
 /*link*/
 .page > .link{position: fixed;bottom: 2%;display: flex;justify-content: center;width: 100%;white-space: nowrap;}
 .page > .link > a{border: 1px solid #d33a31;border-radius: 20px;padding:1.2vh 17vw;margin: 1vh 1vw;font-size: 18px;color: #d33a31;}

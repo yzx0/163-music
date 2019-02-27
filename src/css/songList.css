@@ -21,7 +21,7 @@ header{position: relative;}
 @media (max-width:400px){
   .top > .cover{width: 150px;position: relative;}
 }
-.top > .cover > img{width: 100%;}
+.top > .cover > img{width: 100%;border: 1px solid #aaa;}
 .top > .cover > .headsetIcon{position: absolute;top: 0;right: 0;color: #fff;fill: #fff;font-size: 12px;width: 100%;text-align: right;background:linear-gradient(90deg,transparent,rgba(0,0,0,.3));padding-bottom: 2px;}
 .top > .cover > .headsetIcon span{padding-right: 2px;}
 .top > .cover > .songListIcon{    
@@ -52,13 +52,14 @@ header{position: relative;}
 .briefWrapper > .tag > ul >li{margin-right: 14px;border: 1px solid #ddd;border-radius: 10px;padding: 0 4px;} 
 .briefWrapper > .brief{padding:10px 10px 20px 15px;color: #666;font-size: 14px;}
 
-.songListWrapper{background-color: #f8f8f8;}
-.songListWrapper > .title{background-color: #eeeff0;font-size: 12px;padding: 3px 5px 6px 10px;}
+.songListWrapper{background-color: #fff;}
+.songListWrapper > .title{background-color: #eeeff0;font-size: 12px;padding: 3px 5px 6px 10px;color: #666;}
 .songListWrapper > .songList{background-color: #f8f8f8;}
 .songListWrapper > .songList > ul > li{display: flex;justify-content: space-between;border-bottom: 1px solid #E2E2E3;padding-right: 10px;padding-left: 10px;}
 .songListWrapper > .songList > ul > li > .playIcon{line-height: 56px;}
-.songListWrapper > .songList > ul > li > .playIcon > .icon{width: 1.5em;height: 1.5em;fill: #aaa;}
-.songListWrapper > .songList > ul > li > .songInformation > .songName{font-size: 17px;}
+.songListWrapper > .songList > ul > li > .playIcon > .icon{width: 1.5em;height: 1.5em;fill: #666;}
+.songListWrapper > .songList > ul > li > .icon{width: 22px;height: 22px;fill: #666;margin-top: 18px;}
+.songListWrapper > .songList > ul > li > .songInformation > .songName{font-size: 17px;padding-top: 10px;color: #666;}
 .songListWrapper > .songList > ul > li > .songInformation > .singer{display: flex;margin-top: 3px;margin-bottom: 10px;}
-.songListWrapper > .songList > ul > li > .songInformation > .singer > p{font-size: 12px;color: #888;padding-top: 2px;}
+.songListWrapper > .songList > ul > li > .songInformation > .singer > p{font-size: 12px;color: #666;padding-top: 2px;}
 .songListWrapper > .songList > ul > li > .songInformation > .singer > .toneQualityIcon{margin-right: 3px;}

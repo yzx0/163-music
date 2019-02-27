@@ -7,7 +7,11 @@
       $(this.el).find('#cover').attr('src', song.cover)
       $(this.el).find('#background').css('background', `url(${song.cover})no-repeat center center;background-size: cover;`)
       $(this.el).find('#song-description h3').text(song.name)
-      
+
+      let audio = $(this.el).find('audio').get(0)
+      audio.ontimeupdate = ()=>{
+        this.showLyric(audio.currentTime)
+      }
       let { lyric } = song
 
       let array = lyric.split('\n')
@@ -35,7 +39,7 @@
         p.textContent = text
         let time = newTime[index]
         p.setAttribute('data-time',time)
-        $(this.el).find('#song-description .lyric').append(p)
+        $(this.el).find('#song-description .lyric > .lines').append(p)
       })
     },
     play() {
@@ -46,6 +50,7 @@
           $(this.el).find('#icon-pause').addClass('active')
           $(this.el).find('#icon-play').removeClass('active')
           $(this.el).find('#cover').addClass('playing')
+          this.showLyric()
         }, (error) => {
           console.log(error)
         })
@@ -58,7 +63,7 @@
       $(this.el).find('#cover').removeClass('playing')
     },
     showLyric(time){
-      let allP = this.$el.find('#song-description p')
+      let allP = $(this.el).find('#song-description .lyric p')
       let p 
       for(let i =0;i<allP.length;i++){
         if(i===allP.length-1){
@@ -74,14 +79,13 @@
         }
       }
       let pHeight = p.getBoundingClientRect().top
-      let linesHeight = this.$el.find('.lyric>.lines')[0].getBoundingClientRect().top
+      let linesHeight = $(this.el).find('.lyric>.lines')[0].getBoundingClientRect().top
       let height = pHeight - linesHeight
-      this.$el.find('.lyric>.lines').css({
+      $(this.el).find('.lyric>.lines').css({
         transform: `translateY(${- (height - 25)}px)`
       })
       $(p).addClass('active').siblings('.active').removeClass('active')
     },
-
   }
   let model = {
     data: {
@@ -125,12 +129,10 @@
     },
     bindEvents() {
       $(this.view.el).find('#icon-play').on('click', (e) => {
-        console.log(11111111)
         this.model.setStatus('playing')
         this.view.play()
       })
       $(this.view.el).find('#icon-pause').on('click', () => {
-        console.log(222222222)
         this.model.setStatus('pause')
         this.view.pause()
       })

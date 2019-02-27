@@ -54,27 +54,15 @@
     <p class="title">歌曲列表</p>
     <div class="songList">
       <ul>
-        <li>
-          <div class="songInformation">
-            <p class="songName">歌名1</p>
-            <div class="singer">
-              <div class="toneQualityIcon">
-                <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-sq"></use>
-                </svg>
-              </div>
-              <p> 歌手1</p>
-            </div>
-          </div>
-          <a class="playIcon" href="./song.html?id={{id}}">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-iconplay"></use>
-            </svg>
-          </a>
-        </li>
+
       </ul>
     </div>
   </section>
+  <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./js/initializers/AV.js"></script>
+  
+  <script src="./js/songList/app.js"></script>
 </body>
 
 </html>
