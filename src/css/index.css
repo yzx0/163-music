@@ -28,7 +28,7 @@ nav > .topNavBar{position: relative;}
 /*topfix*/
 nav > .topfix{background: #d43c33;display: flex;justify-content: space-between;}
 nav > .topfix > .topLogo{padding: 20px 0 16px 10px;}
-nav > .topfix > .topLogo > .topsvg{width: 142px;height: 25px;}
+nav > .topfix > .topLogo .topsvg{width: 142px;height: 25px;}
 nav > .topfix > .downloadBtn{display: flex;justify-content: center;align-items: center; margin-right: 10px;}
 nav > .topfix > .downloadBtn > span{border: 1px solid white;color: white;border-radius: 20px;padding: 4px 10px;font-size: 15px;}
 
@@ -45,8 +45,8 @@ nav > .topNavBar > ul >li.active{color: #d43c33;}
 .page > .recommendSongList > .songListShow{}
 .page > .recommendSongList > .songListShow > ul{display: flex;justify-content: space-between;flex-wrap: wrap;}
 .page > .recommendSongList > .songListShow > ul >li{display: flex;flex-direction: column;width: 33%;}
-.page > .recommendSongList > .songListShow > ul > li > div > img{width: 100%;}
-.page > .recommendSongList > .songListShow > ul > li > p{font-size: 13px;color: #333;padding-bottom: 15px;padding-right: 4px;padding-left: 4px;}
+.page > .recommendSongList > .songListShow > ul > li  div > img{width: 100%;}
+.page > .recommendSongList > .songListShow > ul > li  p{font-size: 13px;color: #333;padding-bottom: 15px;padding-right: 4px;padding-left: 4px;}
 
 /*newestSong*/
 .page > .newestSong > .newSong{font-size: 17px;padding: 20px 0 20px 10px;position: relative;}
