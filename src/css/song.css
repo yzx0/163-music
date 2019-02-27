@@ -30,9 +30,10 @@
 /*disc*/
 .disc-container > .disc{margin-top: 4.5vh;width: 100vw;display: flex;justify-content: center;align-items: center;}
 .disc-container > .disc > .ring{width: 80vw;}
-.disc-container > .disc > .light{width: 80vw;position: absolute;}
+.disc-container > .disc > .light{width: 80vw;position: absolute;animation: coverRotate 20s linear infinite;animation-play-state: paused;}
 .disc-container > .disc > .cover{position: absolute;z-index: -1;width: 50vw;border-radius: 50%;animation: coverRotate 20s linear infinite;animation-play-state: paused;}
-.disc-container > .disc > .cover.playing{animation: coverRotate 20s linear infinite;animation-play-state: running;}
+.disc-container > .disc > .cover.playing,
+.disc-container > .disc > .light.playing{animation: coverRotate 20s linear infinite;animation-play-state: running;}
 
 /*icon*/
 .disc-container > .disc > .icon-wrapper{position: absolute;top: 0;left: 0;bottom: 0;right: 0;margin: auto;}

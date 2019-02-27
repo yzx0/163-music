@@ -7,11 +7,7 @@
       $(this.el).find('#cover').attr('src', song.cover)
       $(this.el).find('#background').css('background', `url(${song.cover})no-repeat center center;background-size: cover;`)
       $(this.el).find('#song-description h3').text(song.name)
-
-      let audio = $(this.el).find('audio').get(0)
-      audio.ontimeupdate = ()=>{
-        this.showLyric(audio.currentTime)
-      }
+     
       let { lyric } = song
 
       let array = lyric.split('\n')
@@ -50,7 +46,7 @@
           $(this.el).find('#icon-pause').addClass('active')
           $(this.el).find('#icon-play').removeClass('active')
           $(this.el).find('#cover').addClass('playing')
-          this.showLyric()
+          $(this.el).find('.light').addClass('playing')
         }, (error) => {
           console.log(error)
         })
@@ -61,6 +57,7 @@
       $(this.el).find('#icon-play').addClass('active')
       $(this.el).find('#icon-pause').removeClass('active')
       $(this.el).find('#cover').removeClass('playing')
+      $(this.el).find('.light').removeClass('playing')
     },
     showLyric(time){
       let allP = $(this.el).find('#song-description .lyric p')
@@ -139,8 +136,13 @@
 
       let audio = $(this.view.el).find('audio').get(0)
       audio.onended = () => {
+        console.log('end')
         this.view.pause()
+      },
+      audio.ontimeupdate = ()=>{
+        this.view.showLyric(audio.currentTime)
       }
+      console.log('here')
     },
     getId() {
       let search = window.location.search
